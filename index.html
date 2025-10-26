@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>智能业务平台能力演进 - L0至L4</title>
+    <title>智能的演进 - L0至L4</title>
     <style>
         * {
             margin: 0;
@@ -48,6 +48,18 @@
         .timeline {
             position: relative;
             padding-left: 0;
+        }
+
+        /* 左侧连接线 */
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: -100px;
+            top: 0;
+            bottom: 0;
+            width: 3px;
+            background: #111;
+            z-index: 0;
         }
 
         /* Roadmap 连接线 */
@@ -110,7 +122,7 @@
             color: #fff;
             border-radius: 12px;
             padding: 50px;
-            max-width: 900px;
+            max-width: 1200px;
             margin-left: auto;
             margin-right: auto;
             box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
@@ -122,12 +134,58 @@
             transform: translateY(-8px);
         }
 
+        /* L3 分水岭样式 - 智能系统的开端 */
+        .stage.milestone-l3 {
+            background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
+            border: 3px solid #4ade80;
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
+            position: relative;
+        }
+
+        .stage.milestone-l3:hover {
+            box-shadow: 0 12px 32px rgba(0, 0, 0, 0.3);
+            transform: translateY(-8px);
+            border-color: #22c55e;
+        }
+
+        /* 其他阶段标签 - 蓝色 */
+        .stage:not(.milestone-l3):not(.milestone-l4)::after {
+            content: attr(data-label);
+            position: absolute;
+            top: 20px;
+            right: 30px;
+            background: #3b82f6;
+            color: #fff;
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 700;
+            letter-spacing: 0.5px;
+            display: none;
+        }
+
+        /* L4 阶段标签 - 金色 */
+        .stage.milestone-l4::after {
+            content: attr(data-label);
+            position: absolute;
+            top: 20px;
+            right: 30px;
+            background: #FFD700;
+            color: #1a1a1a;
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 700;
+            letter-spacing: 0.5px;
+            display: none;
+        }
+
         .stage::before {
             content: attr(data-milestone);
             position: absolute;
-            left: 50%;
-            top: -40px;
-            transform: translateX(-50%);
+            left: -140px;
+            top: 50%;
+            transform: translateY(-50%);
             width: 80px;
             height: 80px;
             background: #000;
@@ -145,9 +203,30 @@
 
         .stage-header {
             display: flex;
-            align-items: baseline;
+            align-items: center;
             margin-bottom: 20px;
             gap: 15px;
+        }
+
+        .stage-label {
+            background: #3b82f6;
+            color: #fff;
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 700;
+            letter-spacing: 0.5px;
+            white-space: nowrap;
+        }
+
+        .stage.milestone-l3 .stage-label {
+            background: #4ade80;
+            color: #1a1a1a;
+        }
+
+        .stage.milestone-l4 .stage-label {
+            background: #FFD700;
+            color: #1a1a1a;
         }
 
         .stage-level {
@@ -227,7 +306,7 @@
             background: #fff;
             color: #1a1a1a;
             border-radius: 12px;
-            max-width: 900px;
+            max-width: 1200px;
             border: 2px solid #000;
             box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
             transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
@@ -236,22 +315,6 @@
         .transition:hover {
             box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
             transform: translateY(-6px);
-        }
-
-        .transition::before {
-            content: '';
-            position: absolute;
-            left: 50%;
-            top: -35px;
-            transform: translateX(-50%);
-            width: 70px;
-            height: 70px;
-            background: #fff url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="%23000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>') no-repeat center;
-            background-size: 36px 36px;
-            border: 3px solid #000;
-            border-radius: 50%;
-            z-index: 10;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
         }
 
         .transition-header {
@@ -344,7 +407,7 @@
             .stage::before {
                 width: 60px;
                 height: 60px;
-                top: -30px;
+                left: -30px;
                 font-size: 1.5rem;
             }
 
@@ -384,8 +447,8 @@
 <body>
     <div class="container">
         <header>
-            <h1>智能业务平台能力演进</h1>
-            <p class="subtitle">从静态工具到数字员工团队：L0 至 L4 的技术演进路径</p>
+            <h1>AI-Native 智能系统的演进</h1>
+            <p class="subtitle">从静态工具到数字员工团队：L0 至 L4 的Agent技术演进路径</p>
         </header>
 
         <div class="timeline">
@@ -394,6 +457,7 @@
                 <div class="stage-header">
                     <div class="stage-level">L0</div>
                     <div class="stage-title">传统工具</div>
+                    <div class="stage-label">传统信息化工具</div>
                 </div>
                 <div class="stage-content">
                     <div class="stage-section">
@@ -418,9 +482,9 @@
             <!-- 连接线 -->
             <div class="roadmap-connector"></div>
 
-            <!-- 跃迁一：L0 → L1 -->
+            <!-- L0 → L1 -->
             <div class="transition">
-                <div class="transition-header">跃迁一：L0 → L1【从"手动操作"到"指令操作"】</div>
+                <div class="transition-header">L0 → L1【从"手动操作"到"指令操作"】（预计时间：1个月）</div>
                 <div class="transition-problem">
                     <div class="transition-label">解决的核心问题</div>
                     <div class="transition-text">
@@ -441,7 +505,7 @@
                     <div class="tech-item">混合交互界面：设计对话式交互与传统菜单式交互无缝融合的界面</div>
                 </div>
                 <div class="value-jump">
-                    <div class="transition-label">客户价值跃迁</div>
+                    <div class="transition-label">系统进化</div>
                     效率初步提升，从"动手"变为"动口"，实现最基础的操作简化
                 </div>
             </div>
@@ -454,17 +518,19 @@
                 <div class="stage-header">
                     <div class="stage-level">L1</div>
                     <div class="stage-title">指令助手</div>
+                    <div class="stage-label">指令遵循的初级智能</div>
                 </div>
                 <div class="stage-content">
                     <div class="stage-section">
                         <div class="section-label">系统描述</div>
                         <div class="section-text">
-                            集成语音识别和自然语言理解能力，能够解析并执行单一、明确的指令。本质是"语音化的GUI操作"。
+                            集成语音识别和自然语言理解能力，能够解析并执行单一、明确的指令。本质是"语音化的GUI操作"。目前绝大多数基于dify、n8n、coze的AI系统（本质是工作流模式，Workflow-based）基本上都属于这个级别。
                         </div>
                     </div>
                     <div class="stage-section">
                         <div class="section-label">用户感知</div>
                         <div class="section-text">
+
                             一个"会听话的跑腿伙计"。可以说出需求代替点击，但每次只能办一件固定的事，无法响应复杂请求。
                         </div>
                     </div>
@@ -479,19 +545,19 @@
             <!-- 连接线 -->
             <div class="roadmap-connector"></div>
 
-            <!-- 跃迁二：L1 → L2 -->
+            <!-- L1 → L2 -->
             <div class="transition">
-                <div class="transition-header">跃迁二：L1 → L2【从"单点指令"到"流程自动化"】</div>
+                <div class="transition-header">L1 → L2【从"单点指令"到"流程自动化"】（预计时间：2个月）</div>
                 <div class="transition-problem">
                     <div class="transition-label">解决的核心问题</div>
                     <div class="transition-text">
-                        实现多步骤业务的自动化，减少用户在中介环节的等待和操作。
+                        实现多步骤业务的AI自动化，单智能体具备理解自然语言&流程自动化的能力。
                     </div>
                 </div>
                 <div class="transition-problem">
                     <div class="transition-label">技术瓶颈</div>
                     <div class="transition-text">
-                        系统无法维护任务状态，无法编排和执行包含条件判断的流程。
+                        系统无法维护任务状态，无法编排和执行复合的流程。
                     </div>
                 </div>
                 <div class="tech-investments">
@@ -500,7 +566,7 @@
                     <div class="tech-item">状态持久化：研发任务上下文保持机制，确保流程执行期间"记忆"不丢失</div>
                 </div>
                 <div class="value-jump">
-                    <div class="transition-label">客户价值跃迁</div>
+                    <div class="transition-label">系统进化</div>
                     效率质变，从"替代一次点击"变为"替代整个流程"，真正开始AI辅助自动化核心业务
                 </div>
             </div>
@@ -513,17 +579,19 @@
                 <div class="stage-header">
                     <div class="stage-level">L2</div>
                     <div class="stage-title">流程自动化助手</div>
+                    <div class="stage-label">流程化的中级智能</div>
                 </div>
                 <div class="stage-content">
                     <div class="stage-section">
                         <div class="section-label">系统描述</div>
                         <div class="section-text">
-                            引入智能体控制框架，具备多步骤业务流程的编排和执行能力。能够处理一个完整任务链和简单异常。
+                            引入智能体控制框架，单个智能体具备多步骤业务流程的编排和执行能力。能够处理一个完整任务链和简单异常。基于传统的dify、n8n等面临业务路径膨胀等问题，到这里基本上就走到尽头了，本质是工作流模式（Workflow-based）无法往复杂系统演进了。
                         </div>
                     </div>
                     <div class="stage-section">
                         <div class="section-label">用户感知</div>
                         <div class="section-text">
+
                             一个"熟练的业务专员"。只需下达一个目标，它能自动完成一系列标准操作。
                         </div>
                     </div>
@@ -539,9 +607,9 @@
             <!-- 连接线 -->
             <div class="roadmap-connector"></div>
 
-            <!-- 跃迁三：L2 → L3 -->
+            <!-- L2 → L3 -->
             <div class="transition">
-                <div class="transition-header">跃迁三：L2 → L3【从"流程自动化"到"角色化专家"】</div>
+                <div class="transition-header">L2 → L3【从"流程自动化"到"角色化专家"】（预计时间：保守估计3个月完成第一版）</div>
                 <div class="transition-problem">
                     <div class="transition-label">解决的核心问题</div>
                     <div class="transition-text">
@@ -551,22 +619,30 @@
                 <div class="transition-problem">
                     <div class="transition-label">技术瓶颈</div>
                     <div class="transition-text">
-                        系统是"失忆"的，无法进行基于历史的推理和个性化交互。
+                        系统是"失忆"的，无法进行基于历史的推理和个性化交互，无法进行连续的对话，幻觉率很高。
                     </div>
                 </div>
                 <div class="tech-investments">
                     <div class="transition-label">核心技术投入</div>
-                    <div class="tech-item"><strong>记忆系统（巨额投入点，必须自研）：</strong>
+                    <div class="tech-item"><strong>记忆系统（核心竞争力，必须自研）：</strong>
                         <div style="margin-left: 20px; margin-top: 8px;">
                             <div>• 存储层：混合存储架构（向量数据库+图数据库+传统数据库）</div>
                             <div>• 检索层：智能体记忆中间件，智能判断检索策略并组织上下文</div>
-                            <div>• 记忆生成：记忆抽取、合并、更新、遗忘等核心机制</div>
+                            <div>• 生命周期：记忆抽取、合并、更新、遗忘等核心机制</div>
+                        </div>
+                    </div>
+                    <div class="tech-item"><strong>上下文工程（核心竞争力，必须自研）：</strong>
+                        <div style="margin-left: 20px; margin-top: 8px;">
+                            <div>• 构建：上下文窗口管理（Token预算优化）、提示词模板工程、动态上下文裁剪</div>
+                            <div>• 检索：多路召回（向量/图/传统数据库并行查询）、检索相关性排序（RAG算法优化）、查询重写</div>
+                            <div>• 维护：会话状态管理、状态传播与同步（LangGraph等工作流中的状态一致性）</div>
+                            <div>• 验证：来源引用与验证、上下文grounding（抑制幻觉，确保推理基于准确前提）</div>
                         </div>
                     </div>
                     <div class="tech-item">角色化路由系统：开发动态分配和切换智能体角色的控制器，构建多轮对话能力和知识库</div>
                 </div>
                 <div class="value-jump">
-                    <div class="transition-label">客户价值跃迁</div>
+                    <div class="transition-label">系统进化</div>
                     体验质变，从"高效但死板"的工具，变为"懂业务、懂客户"的专业顾问
                 </div>
             </div>
@@ -575,21 +651,23 @@
             <div class="roadmap-connector"></div>
 
             <!-- L3 阶段 -->
-            <div class="stage" data-milestone="L3">
+            <div class="stage milestone-l3" data-milestone="L3">
                 <div class="stage-header">
                     <div class="stage-level">L3</div>
-                    <div class="stage-title">角色化专家员工</div>
+                    <div class="stage-title">数字员工</div>
+                    <div class="stage-label">系统智能分水岭</div>
                 </div>
                 <div class="stage-content">
                     <div class="stage-section">
                         <div class="section-label">系统描述</div>
                         <div class="section-text">
-                            系统具备长期记忆和角色化路由能力。能够基于历史信息和对话者身份，提供个性化、专业化的连续服务。
+                            系统具备长期记忆和角色化路由能力。能够基于历史信息和对话者身份，提供个性化、专业化的连续服务。<strong>从这里开始才是真正的AI-native</strong>，AI开始真正发挥作用，系统提供的服务开始逐渐减少对人工的开发和迭代的依赖，AI会在业务规则和工具的帮助下自主对外提供服务。
                         </div>
                     </div>
                     <div class="stage-section">
                         <div class="section-label">用户感知</div>
                         <div class="section-text">
+
                             一个"有经验的部门专家"。它认识你和你的客户，回答专业，服务贴心。
                         </div>
                     </div>
@@ -604,9 +682,9 @@
             <!-- 连接线 -->
             <div class="roadmap-connector"></div>
 
-            <!-- 跃迁四：L3 → L4 -->
+            <!-- L3 → L4 -->
             <div class="transition">
-                <div class="transition-header">跃迁四：L3 → L4【从"角色化专家"到"协同数字团队"】</div>
+                <div class="transition-header">L3 → L4【从"角色化专家"到"协同数字团队"】（预计时间：暂时无法估计）</div>
                 <div class="transition-problem">
                     <div class="transition-label">解决的核心问题</div>
                     <div class="transition-text">
@@ -630,8 +708,8 @@
                     </div>
                 </div>
                 <div class="value-jump">
-                    <div class="transition-label">客户价值跃迁</div>
-                    运营模式质变，从"管理多个工具/员工"的项目经理，转变为"管理一个高效自主团队"的指挥官
+                    <div class="transition-label">系统进化</div>
+                    软件范式变化，从"管理多个工具/员工"，转变为"管理一个高效自主的团队"
                 </div>
             </div>
 
@@ -639,10 +717,11 @@
             <div class="roadmap-connector"></div>
 
             <!-- L4 阶段 -->
-            <div class="stage" data-milestone="L4">
+            <div class="stage milestone-l4" data-milestone="L4">
                 <div class="stage-header">
                     <div class="stage-level">L4</div>
                     <div class="stage-title">协同数字团队（终极形态）</div>
+                    <div class="stage-label">多智能体协同阶段</div>
                 </div>
                 <div class="stage-content">
                     <div class="stage-section">
